@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meta-X</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link href="index.css" rel="stylesheet" />
+</head>
+
+<body class="font-sans flex flex-col min-h-screen">
+  <nav class="bg-blue-900 text-white p-4 fixed w-full z-10">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            <span class="text-2xl font-bold">Meta-X</span>
+        </div>
+        <div class="hidden md:flex space-x-8">
+            <a href="index.html" class="relative group font-bold">
+                <span>Home</span>
+                <span class="absolute left-0 bottom-[-6px] w-full h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </a>
+            <a href="about.html" class="relative group font-bold">
+                <span>About</span>
+                <span class="absolute left-0 bottom-[-6px] w-full h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </a>
+            <a href="register.html" class="relative group font-bold">
+                <span>Register</span>
+                <span class="absolute left-0 bottom-[-6px] w-full h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </a>
+            <a href="contact.html" class="relative group font-bold">
+                <span>Contact</span>
+                <span class="absolute left-0 bottom-[-6px] w-full h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </a>
+            <a href="ba-register.html" class="relative group font-bold">
+                <span>Brand Ambassador</span>
+                <span class="absolute left-0 bottom-[-6px] w-full h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </a>
+        </div>
+        <div class="md:hidden">
+            <button id="hamburger" class="text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div id="mobile-menu" class="fixed inset-0 bg-blue-900 text-white flex flex-col items-center justify-center transform translate-x-full transition-transform duration-300 ease-in-out">
+    <button id="close-btn" class="absolute top-4 right-4">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+    <a href="index.html" class="text-2xl my-4 hover:text-purple-300 transition duration-300">Home</a>
+    <a href="about.html" class="text-2xl my-4 hover:text-purple-300 transition duration-300">About</a>
+    <a href="register.html" class="text-2xl my-4 hover:text-purple-300 transition duration-300">Register</a>
+    <a href="contact.html" class="text-2xl my-4 hover:text-purple-300 transition duration-300">Contact</a>
+    <a href="ba-register.html" class="text-2xl my-4 hover:text-purple-300 transition duration-300">Brand Ambassador</a>
+</div>
+
+  <header
+    class="relative bg-gradient-to-r from-blue-900 via-purple-800 to-blue-900 text-white h-screen flex items-center justify-center">
+    <div class="gradient-overlay"></div>
+    <!-- Semi-transparent overlay -->
+    <div class="container mx-auto text-center px-4 hero-content">
+      <h1 class="text-5xl md:text-7xl font-bold mb-4 animate-pulse text-purple-400"
+        style="text-shadow: 0 0 10px rgba(128, 0, 128, 0.6)">
+        Welcome to Meta-X
+      </h1>
+      <p class="text-xl md:text-2xl mb-8">
+        Experience the Future of Education
+      </p>
+      <a href="#"
+        class="bg-white text-purple-800 px-8 py-3 rounded-full text-lg font-semibold hover:bg-purple-100 transition duration-300 inline-block">Register
+        Now</a>
+    </div>
+    <div class="absolute inset-0" id="hero-background"></div>
+    <!-- Background images -->
+  </header>
+
+  <main class="flex-grow w-full py-16 px-4">
+    <section class="mb-24 opacity-0 transition-opacity duration-1000 ease-in-out" id="about">
+      <h2 class="text-3xl font-bold mb-4 text-blue-300">About Meta-X</h2>
+      <p class="text-lg text-gray-300">
+        Meta-X is a groundbreaking school event that brings together the
+        brightest minds to explore the intersection of technology and
+        education. Join us for an unforgettable experience of learning,
+        innovation, and collaboration.
+      </p>
+    </section>
+
+    <section class="mb-24 opacity-0 transition-opacity duration-1000 ease-in-out" id="features">
+      <h2 class="text-3xl font-bold mb-4 text-blue-300">Event Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-md feature-card transition-transform duration-300 ease-in-out transform hover:scale-105">
+          <i class="fas fa-robot text-4xl text-orange-400 mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">AI Workshops</h3>
+          <p class="text-gray-400">
+            Showcase your skills of artificial intelligence.
+          </p>
+        </div>
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-md feature-card transition-transform duration-300 ease-in-out transform hover:scale-105">
+          <i class="fas fa-vr-cardboard text-4xl text-orange-400 mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">VR Experiences</h3>
+          <p class="text-gray-400">
+            Immerse yourself in virtual reality learning environments.
+          </p>
+        </div>
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-md feature-card transition-transform duration-300 ease-in-out transform hover:scale-105">
+          <i class="fas fa-users text-4xl text-orange-400 mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">Networking</h3>
+          <p class="text-gray-400">
+            Connect with industry leaders and like-minded innovators.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Countdown Section -->
+    <section id="countdown" class="text-center py-16 bg-transparent text-white rounded-lg shadow-xl">
+      <h2 class="text-3xl font-bold mb-6 text-orange-400">Countdown to Meta-X</h2>
+      <div id="countdown-timer" class="text-4xl md:text-5xl font-semibold space-x-4 flex flex-wrap justify-center">
+        <div class="bg-orange-400 px-6 py-3 rounded-full shadow-md text-black mb-4 sm:mb-0">
+          <span id="days"></span> <span class="text-xl">days</span>
+        </div>
+        <div class="bg-orange-400 px-6 py-3 rounded-full shadow-md text-black mb-4 sm:mb-0">
+          <span id="hours"></span> <span class="text-xl">hours</span>
+        </div>
+        <div class="bg-orange-400 px-6 py-3 rounded-full shadow-md text-black mb-4 sm:mb-0">
+          <span id="minutes"></span> <span class="text-xl">minutes</span>
+        </div>
+        <div class="bg-orange-400 px-6 py-3 rounded-full shadow-md text-black mb-4 sm:mb-0">
+          <span id="seconds"></span> <span class="text-xl">seconds</span>
+        </div>
+      </div>
+      <div class="mt-6">
+        <p class="text-lg text-gray-300">The event starts soon! Be ready </p>
+        <p class="text-lg text-gray-300">Friday 21st Feburary at 8:30 AM</p>
+      </div>
+    </section>
+
+    <section class="register opacity-0 transition-opacity duration-1000 ease-in-out" id="cta">
+      <div class="bg-blue-900 text-white p-8 rounded-lg text-center">
+        <h2 class="text-3xl font-bold mb-4">Ready to Join the Future?</h2>
+        <p class="text-xl mb-6">
+          Secure your spot at Meta-X and be part of the educational
+          revolution.
+        </p>
+        <a href="#"
+          class="bg-white text-blue-900 px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300 inline-block">Register
+          Now</a>
+
+        <!-- Download Eligibility Button -->
+        <a href="EligibilityCriteria2025.docx" download="Meta-X_Eligibility_Criteria"
+          class="mt-6 w-50 md:w-56 inline-block bg-blue-600 text-white text-lg font-semibold mx-4 text-center px-8 py-3 rounded-full hover:bg-blue-600 transition duration-300">
+          Eligibility Criteria
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap justify-between">
+        <div class="w-full md:w-1/3 mb-6 md:mb-0">
+          <h3 class="text-xl font-semibold mb-2">Meta-X</h3>
+          <p class="text-gray-400">Shaping the future of education</p>
+        </div>
+        <div class="w-full md:w-1/3 mb-6 md:mb-0">
+          <h3 class="text-xl font-semibold mb-2">Quick Links</h3>
+          <ul class="text-gray-400">
+            <li><a href="#" class="hover:text-white">Home</a></li>
+            <li><a href="#" class="hover:text-white">About</a></li>
+            <li><a href="#" class="hover:text-white">Register</a></li>
+            <li><a href="#" class="hover:text-white">Contact</a></li>
+          </ul>
+        </div>
+        <div class="w-full md:w-1/3">
+          <h3 class="text-xl font-semibold mb-2">Connect With Us</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 text-center text-gray-400">
+        <p>&copy; 2025 Meta-X. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = 1;
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll("section").forEach((section) => {
+        observer.observe(section);
+      });
+
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const closeBtn = document.getElementById("close-btn");
+      const menuIcon = document.getElementById("menu-icon");
+
+      hamburger.addEventListener("click", () => {
+        mobileMenu.classList.remove("translate-x-full");
+        mobileMenu.classList.add("translate-x-0");
+        menuIcon.setAttribute("d", "M6 18L18 6M6 6l12 12"); // Change to close icon
+      });
+
+      closeBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("translate-x-0");
+        mobileMenu.classList.add("translate-x-full");
+        menuIcon.setAttribute("d", "M4 6h16M4 12h16m-7 6h7"); // Change back to hamburger icon
+      });
+
+      // Image Slider
+      let currentSlide = 0;
+      const slides = document.getElementById("slides");
+      const totalSlides = slides.children.length;
+
+      document.getElementById("next").addEventListener("click", () => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlidePosition();
+      });
+
+      document.getElementById("prev").addEventListener("click", () => {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlidePosition();
+      });
+
+      function updateSlidePosition() {
+        const offset = -currentSlide * 100;
+        slides.style.transform = translateX({ offset });
+      }
+    });
+  </script>
+
+  <script>
+    // Countdown timer script
+    const targetDate = new Date("February 23, 2025 8:30:00").getTime();
+
+    function updateCountdown() {
+      const currentDate = new Date().getTime();
+      const remainingTime = targetDate - currentDate;
+
+      if (remainingTime <= 0) {
+        document.getElementById("countdown-timer").innerHTML = "The event has started!";
+        return;
+      }
+
+      const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+
+  <script>
+    const backgroundImages = [
+      'url("tech3.jpg")',
+      'url("images.webp")',
+      'url("image.jpg")',
+    ];
+
+    let currentBackgroundIndex = 0;
+
+    function changeBackground() {
+      const heroBackground = document.getElementById("hero-background");
+
+      // Fade out
+      heroBackground.style.opacity = 0;
+
+      // Wait for the fade-out transition to complete
+      setTimeout(() => {
+        // Change the background image
+        heroBackground.style.backgroundImage =
+          backgroundImages[currentBackgroundIndex];
+
+        // Fade in
+        heroBackground.style.opacity = 1;
+
+        // Update the index for the next image
+        currentBackgroundIndex =
+          (currentBackgroundIndex + 1) % backgroundImages.length;
+      }, 1000); // Match this duration with your CSS transition time
+    }
+
+    // Change background every 5 seconds
+    setInterval(changeBackground, 5000);
+
+    // Set initial background
+    changeBackground();
+  </script>
+</body>
+
+</html>

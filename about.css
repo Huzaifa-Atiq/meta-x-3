@@ -1,0 +1,21 @@
+
+#mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; 
+}
+
+.mains{
+    width: 100%;
+    height: 800px;
+}
+
+.headtext{
+    margin-top: 70px;
+}
+
+.head1{
+    color: #FF69B4;
+}

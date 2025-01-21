@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Meta-X</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <style>
+        /* CSS for Scrolling Gallery */
+        .scrolling-gallery {
+            display: flex;
+            gap: 16px;
+            cursor: grab; /* Show grab cursor while dragging */
+        }
+
+        .scrolling-gallery > div {
+            min-width: 250px;
+            flex-shrink: 0;
+        }
+
+        .scrolling-container {
+            overflow-x: auto; /* Make sure it's scrollable horizontally */
+            overflow-y: hidden;
+            position: relative;
+        }
+
+        /* Button Styling */
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .scroll-button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .prev-button {
+            left: 10px;
+        }
+
+        .next-button {
+            right: 10px;
+        }
+
+        /* Mobile Menu Styling */
+        .mobile-menu {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+        }
+
+        .mobile-menu a {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body class="font-sans flex flex-col min-h-screen">
+    <nav class="bg-blue-900 text-white p-4 fixed w-full z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+                <span class="text-2xl font-bold">Meta-X</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="relative group font-bold">
+                    <span>Home</span>
+                    <span class="absolute left-0 bottom-[-6px] w-full h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </a>
+                <a href="about.html" class="relative group font-bold">
+                    <span>About</span>
+                    <span class="absolute left-0 bottom-[-6px] w-full h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </a>
+                <a href="register.html" class="relative group font-bold">
+                    <span>Register</span>
+                    <span class="absolute left-0 bottom-[-6px] w-full h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </a>
+                <a href="contact.html" class="relative group font-bold">
+                    <span>Contact</span>
+                    <span class="absolute left-0 bottom-[-6px] w-full h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </a>
+                <a href="ba-register.html" class="relative group font-bold">
+                    <span>Brand Ambassador</span>
+                    <span class="absolute left-0 bottom-[-6px] w-full h-1 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </a>
+            </div>
+            <div class="md:hidden">
+                <button id="hamburger" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="mobile-menu" class="fixed inset-0 bg-blue-900 text-white flex flex-col items-center justify-center transform translate-x-full transition-transform duration-300 ease-in-out">
+        <button id="close-btn" class="absolute top-4 right-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <a href="index.html" class="text-2xl my-4 hover:text-purple-300 transition duration-300">Home</a>
+        <a href="about.html" class="text-2xl my-4 hover:text-purple-300 transition duration-300">About</a>
+        <a href="register.html" class="text-2xl my-4 hover:text-purple-300 transition duration-300">Register</a>
+        <a href="contact.html" class="text-2xl my-4 hover:text-purple-300 transition duration-300">Contact</a>
+        <a href="ba-register.html" class="text-2xl my-4 hover:text-purple-300 transition duration-300">Brand Ambassador</a>
+    </div>
+    
+  
+
+    <header class="relative bg-gradient-to-r from-blue-900 via-purple-800 to-blue-900 text-white h-screen flex items-center justify-center ">
+        <div class="gradient-overlay"></div>
+        <div class="container mx-auto text-center px-4 hero-content">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 animate-pulse text-purple-400"
+                style="text-shadow: 0 0 10px rgba(128, 0, 128, 0.6);">About meta-x</h1>
+            <p class="text-xl md:text-2xl mb-8">Experience the Future of Education</p>
+            <a href="#"
+                class="bg-white text-purple-800 px-8 py-3 rounded-full text-lg font-semibold hover:bg-purple-100 transition duration-300 inline-block">Register
+                Now</a>
+        </div>
+        <div class="absolute inset-0" id="hero-background"></div>
+    </header>
+
+    <h2 class="text-4xl mx-auto mt-20">Highlights - 2024</h2>
+
+    <!-- Desktop Image Gallery -->
+<div class="max-w-7xl mx-auto my-20 hidden md:block">
+    <div class="relative overflow-hidden scrolling-container" id="gallery-container">
+        <div class="scrolling-gallery flex gap-4" id="gallery">
+            <div class="flex-none w-100 h-80 relative group">
+                <img src="images/image1.jpeg" alt="my img" draggable="false" 
+                    class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:scale-105"
+                    loading="lazy">
+            </div>
+            <div class="flex-none w-100 h-80 relative group">
+                <img src="images/image2.jpeg" alt="Ocean sunset" draggable="false"
+                    class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:scale-105"
+                    loading="lazy">
+            </div>
+            <div class="flex-none w-100 h-80 relative group">
+                <img src="images/image3.jpeg" alt="Forest path" draggable="false"
+                    class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:scale-105"
+                    loading="lazy">
+            </div>
+            <div class="flex-none w-100 h-80 relative group">
+                <img src="images/image4.jpeg" alt="Desert dunes" draggable="false"
+                    class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:scale-105"
+                    loading="lazy">
+            </div>
+            <div class="flex-none w-100 h-80 relative group">
+                <img src="images/image5.jpeg" alt="Snowy peaks" draggable="false"
+                    class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:scale-105"
+                    loading="lazy">
+            </div>
+            <div class="flex-none w-100 h-80 relative group">
+                <img src="images/image6.jpeg" alt="Mountain view" draggable="false"
+                    class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:scale-105"
+                    loading="lazy">
+            </div>
+            <div class="flex-none w-100 h-80 relative group">
+                <img src="images/image7.jpeg" alt="Beach at dusk" draggable="false"
+                    class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:scale-105"
+                    loading="lazy">
+            </div>
+            <div class="flex-none w-100 h-80 relative group">
+                <img src="images/image8.jpeg" alt="City skyline" draggable="false"
+                    class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:scale-105"
+                    loading="lazy">
+            </div>
+            <div class="flex-none w-100 h-80 relative group">
+                <img src="images/image9.jpeg" alt="Sunrise over hills" draggable="false"
+                    class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:scale-105"
+                    loading="lazy">
+            </div>
+            <div class="flex-none w-100 h-80 relative group">
+                <img src="images/image10.jpeg" alt="Autumn forest" draggable="false"
+                    class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:scale-105"
+                    loading="lazy">
+            </div>
+            <div class="flex-none w-100 h-80 relative group">
+                <img src="images/image11.jpeg" alt="Lake reflection" draggable="false"
+                    class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:scale-105"
+                    loading="lazy">
+            </div>
+            <div class="flex-none w-100 h-80 relative group">
+                <img src="images/image12.jpeg" alt="Rolling hills" draggable="false"
+                    class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:scale-105"
+                    loading="lazy">
+            </div>
+            <div class="flex-none w-100 h-80 relative group">
+                <img src="images/image13.jpeg" alt="Night cityscape" draggable="false"
+                    class="w-full h-full object-cover rounded-lg transition duration-300 group-hover:scale-105"
+                    loading="lazy">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- mobile gallery -->
+<div class="w-[85%] mx-auto my-20 block md:hidden">
+    <div class="relative overflow-hidden">
+        <div class="flex justify-center items-center">
+            <img id="mobileImage" src="images/image5.jpeg" alt="Gallery Image" class="w-full h-80 object-cover rounded-lg transition duration-300" loading="lazy">
+        </div>
+
+        <!-- Scrolling Buttons -->
+        <div class="scroll-button prev-button" id="prevButtonMobile">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="scroll-button next-button" id="nextButtonMobile">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+</div>
+
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/3 mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-2">Meta-X</h3>
+                    <p class="text-gray-400">Shaping the future of education</p>
+                </div>
+                <div class="w-full md:w-1/3 mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-2">Quick Links</h3>
+                    <ul class="text-gray-400">
+                        <li><a href="#" class="hover:text-white">Home</a></li>
+                        <li><a href="#" class="hover:text-white">About</a></li>
+                        <li><a href="#" class="hover:text-white">Register</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/3">
+                    <h3 class="text-xl font-semibold mb-2">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-400">
+                <p>&copy; 2025 Meta-X. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            // Toggle the mobile menu visibility when the hamburger is clicked
+            hamburger.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden'); // Toggle the 'hidden' class
+            });
+
+            // Dragging functionality for the gallery
+            const gallery = document.getElementById('gallery');
+            const galleryContainer = document.getElementById('gallery-container');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            gallery.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - galleryContainer.offsetLeft;
+                scrollLeft = galleryContainer.scrollLeft;
+                galleryContainer.style.cursor = 'grabbing'; // Change cursor on drag start
+            });
+
+            gallery.addEventListener('mouseleave', () => {
+                isDown = false;
+                galleryContainer.style.cursor = 'grab'; // Reset cursor when mouse leaves
+            });
+
+            gallery.addEventListener('mouseup', () => {
+                isDown = false;
+                galleryContainer.style.cursor = 'grab'; // Reset cursor on mouse up
+            });
+
+            gallery.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - galleryContainer.offsetLeft;
+                const walk = (x - startX) * 2; // The multiplier controls the speed of dragging
+                galleryContainer.scrollLeft = scrollLeft - walk;
+            });
+
+            // Disable image dragging
+            const images = gallery.getElementsByTagName('img');
+            Array.from(images).forEach((img) => {
+                img.addEventListener('dragstart', (e) => {
+                    e.preventDefault(); // Disable dragstart on images
+                });
+            });
+        });
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeBtn = document.getElementById('close-btn');
+        const menuIcon = document.getElementById('menu-icon');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
+            menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // Change to close icon
+        });
+
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('translate-x-full');
+            menuIcon.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7'); // Change back to hamburger icon
+        });
+
+        // Image Slider
+        let currentSlide = 0;
+        const slides = document.getElementById('slides');
+        const totalSlides = slides.children.length;
+
+        document.getElementById('next').addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlidePosition();
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlidePosition();
+        });
+
+        function updateSlidePosition() {
+            const offset = -currentSlide * 100;
+            slides.style.transform = `translateX(${offset}%)`;
+        }
+
+        
+    });
+</script>
+
+<script>
+const backgroundImages = [
+'url("tech3.jpeg")',
+'url("images.webp")',
+'url("image.jpeg")'
+];
+
+let currentBackgroundIndex = 0;
+
+function changeBackground() {
+const heroBackground = document.getElementById('hero-background');
+
+// Fade out
+heroBackground.style.opacity = 0;
+
+// Wait for the fade-out transition to complete
+setTimeout(() => {
+    // Change the background image
+    heroBackground.style.backgroundImage = backgroundImages[currentBackgroundIndex];
+    
+    // Fade in
+    heroBackground.style.opacity = 1;
+
+    // Update the index for the next image
+    currentBackgroundIndex = (currentBackgroundIndex + 1) % backgroundImages.length;
+}, 1000); // Match this duration with your CSS transition time
+}
+
+// Change background every 5 seconds
+setInterval(changeBackground, 5000);
+
+// Set initial background
+changeBackground();
+
+</script>
+
+<script>
+    const mobileImages = [
+        'images/image1.jpeg', 'images/image2.jpeg', 'images/image3.jpeg', 
+        'images/image4.jpeg', 'images/image5.jpeg', 'images/image6.jpeg', 
+        'images/image7.jpeg', 'images/image8.jpeg', 'images/image9.jpeg', 
+        'images/image10.jpeg', 'images/image11.jpeg', 'images/image12.jpeg', 
+        'images/image13.jpeg'
+    ];
+    let currentImageIndex = 0;
+
+    // Mobile gallery navigation
+    const mobileImageElement = document.getElementById('mobileImage');
+    
+    document.getElementById('prevButtonMobile').addEventListener('click', () => {
+        currentImageIndex = (currentImageIndex > 0) ? currentImageIndex - 1 : mobileImages.length - 1;
+        mobileImageElement.src = mobileImages[currentImageIndex];
+    });
+
+    document.getElementById('nextButtonMobile').addEventListener('click', () => {
+        currentImageIndex = (currentImageIndex < mobileImages.length - 1) ? currentImageIndex + 1 : 0;
+        mobileImageElement.src = mobileImages[currentImageIndex];
+    });
+</script>
+
+
+
+
+
+</body>
+
+</html>

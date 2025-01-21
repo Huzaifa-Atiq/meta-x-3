@@ -1,0 +1,61 @@
+
+#mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; 
+}
+
+.register {
+  width: 80%;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid{
+    margin-top: 50px;
+}
+
+body {
+    background-color: #1a202c; 
+    color: #e2e8f0; 
+}
+
+#hero-background {
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0; /* Start hidden */
+    z-index: 1; /* Ensure it sits below content but above background */
+}
+
+.hero-content {
+    position: relative; /* For positioning content above the background */
+    z-index: 5; /* Content should be above the background images */
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: 2; /* Ensure overlay sits above the background */
+}
+
+nav {
+    z-index: 50; /* Higher value to stay above other content */
+}
+
+header {
+    position: relative;
+    overflow: hidden; /* Keep any overflow contained */
+}
